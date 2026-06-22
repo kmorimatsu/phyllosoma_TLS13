@@ -72,3 +72,20 @@ void machikania_free(void *ptr);
 /* Added for pico-sdk ver 2.2.0 */
 #define MBEDTLS_PLATFORM_MS_TIME_ALT
 #define MBEDTLS_PLATFORM_TIME_ALT
+
+/* TLS 1.3 */
+#define MBEDTLS_SSL_PROTO_TLS1_3
+#define MBEDTLS_ECDH_C
+#define MBEDTLS_ECDSA_C
+#define MBEDTLS_ECP_C
+#define MBEDTLS_ECP_DP_SECP256R1_ENABLED
+#define MBEDTLS_ECP_DP_X25519_ENABLED
+#define MBEDTLS_HKDF_C
+#define MBEDTLS_SHA256_C
+#define MBEDTLS_SHA512_C
+#define MBEDTLS_CIPHER_C
+#define MBEDTLS_AES_C
+#define MBEDTLS_GCM_C
+#define MBEDTLS_CCM_C
+#define MBEDTLS_PSA_CRYPTO_C
+#define MBEDTLS_SSL_KEEP_PEER_CERTIFICATE
