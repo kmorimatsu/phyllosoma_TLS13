@@ -218,6 +218,12 @@ void start_tls_client(const char* servername, int tcp_port) {
 	/* No CA certificate checking */
 	if (!tls_config) tls_config = altcp_tls_create_config_client(NULL, 0);
 
+/* 最小バージョンを TLS 1.3 に固定したい場合（任意） */
+mbedtls_ssl_conf_min_version((mbedtls_ssl_config *)tls_config, MBEDTLS_SSL_MAJOR_VERSION_3, MBEDTLS_SSL_MINOR_VERSION_4); // 3.4 = TLS 1.3
+
+/* 最大バージョンが TLS 1.3 になっているか確認 */
+mbedtls_ssl_conf_max_version((mbedtls_ssl_config *)tls_config, MBEDTLS_SSL_MAJOR_VERSION_3, MBEDTLS_SSL_MINOR_VERSION_4);
+
 	TLS_CLIENT_T *state = tls_client_init();
 
 	state->port=tcp_port;
