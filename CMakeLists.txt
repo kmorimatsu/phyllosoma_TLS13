@@ -77,6 +77,16 @@ if (TARGET tinyusb_device)
 	# Create wifi library
 	if (MACHIKANIA_WIFI STREQUAL "withwifi")
 		add_library(wifi_files
+			${PICO_SDK_PATH}/lib/mbedtls/library/ssl_tls13_client.c
+			${PICO_SDK_PATH}/lib/mbedtls/library/ssl_tls13_server.c
+			${PICO_SDK_PATH}/lib/mbedtls/library/ssl_tls13_generic.c
+			${PICO_SDK_PATH}/lib/mbedtls/library/ssl_tls13_keys.c
+			#${PICO_SDK_PATH}/lib/mbedtls/library/ssl_crypto.c
+			#${PICO_SDK_PATH}/lib/mbedtls/library/ssl_plat.c
+			${PICO_SDK_PATH}/lib/mbedtls/library/psa_util.c
+			${PICO_SDK_PATH}/lib/mbedtls/library/psa_crypto_slot_management.c
+			${PICO_SDK_PATH}/lib/mbedtls/library/psa_crypto_client.c
+			${PICO_SDK_PATH}/lib/mbedtls/library/psa_crypto_driver_wrappers_no_static.c
 			wifi/withwifi.c
 			wifi/wifierror.c
 			wifi/socket.c
