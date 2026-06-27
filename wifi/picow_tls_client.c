@@ -219,21 +219,11 @@ void start_tls_client(const char* servername, int tcp_port) {
 	if (!tls_config) {
 		tls_config = altcp_tls_create_config_client(NULL, 0);
 
-		psa_status_t status = psa_crypto_init();
-		if (status != PSA_SUCCESS) {
-		    // 💡 もしここが失敗（0以外の値）しているなら、それが -0x6C00 の直接の原因です！
-		    printstr("psa_crypto_init failed! Error code: ");
-		    printint(status);
-		} else {
-		    printstr("psa_crypto_init success!\n");
-		}
+		mbedtls_ssl_config *mbed_conf = (mbedtls_ssl_config *)tls_config;
+		mbedtls_ssl_conf_authmode(mbed_conf, MBEDTLS_SSL_VERIFY_NONE);
 
-
-/* 最小バージョンを TLS 1.3 に固定したい場合（任意） */
-mbedtls_ssl_conf_min_version((mbedtls_ssl_config *)tls_config, MBEDTLS_SSL_MAJOR_VERSION_3, MBEDTLS_SSL_MINOR_VERSION_4); // 3.4 = TLS 1.3
-
-/* 最大バージョンが TLS 1.3 になっているか確認 */
-mbedtls_ssl_conf_max_version((mbedtls_ssl_config *)tls_config, MBEDTLS_SSL_MAJOR_VERSION_3, MBEDTLS_SSL_MINOR_VERSION_4);
+		mbedtls_ssl_conf_min_version((mbedtls_ssl_config *)tls_config, MBEDTLS_SSL_MAJOR_VERSION_3, MBEDTLS_SSL_MINOR_VERSION_4); // 3.4 = TLS 1.3
+		mbedtls_ssl_conf_max_version((mbedtls_ssl_config *)tls_config, MBEDTLS_SSL_MAJOR_VERSION_3, MBEDTLS_SSL_MINOR_VERSION_4);
 
 	}
 
