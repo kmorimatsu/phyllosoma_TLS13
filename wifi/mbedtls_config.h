@@ -12,8 +12,6 @@ void machikania_free(void *ptr);
 #define MBEDTLS_NO_PLATFORM_ENTROPY
 #define MBEDTLS_ENTROPY_HARDWARE_ALT
 
-#define MBEDTLS_SSL_OUT_CONTENT_LEN    2048
-
 #define MBEDTLS_ALLOW_PRIVATE_ACCESS
 #define MBEDTLS_HAVE_TIME
 
@@ -115,6 +113,6 @@ void machikania_free(void *ptr);
 #define MBEDTLS_CTR_DRBG_ENTROPY_LEN       32
 #define MBEDTLS_PSA_KEY_SLOT_COUNT          4
 #define MBEDTLS_PSA_MAX_KEY_BITS            2048
+#define MBEDTLS_SSL_SESSION_TICKETS
 
-#undef MBEDTLS_SSL_OUT_CONTENT_LEN
-#define MBEDTLS_SSL_OUT_CONTENT_LEN    16384  /* or 4096 / 8192 */
+#define MBEDTLS_SSL_OUT_CONTENT_LEN    16384

@@ -24,11 +24,9 @@
 
 #include <mbedtls/platform.h>
 
-#if defined(mbedtls_ms_time_t)
 mbedtls_ms_time_t mbedtls_ms_time(void) {
     return (mbedtls_ms_time_t)(time_us_64() / 1000);
 }
-#endif
 
 static char g_wifi_id[128]=MACHIKANIA_DEFAULT_WIFI_SSID128;
 static char g_wifi_passwd[128]=MACHIKANIA_DEFAULT_WIFI_PASSWD128;
