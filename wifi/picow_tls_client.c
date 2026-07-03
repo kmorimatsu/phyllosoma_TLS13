@@ -209,18 +209,42 @@ static TLS_CLIENT_T* tls_client_init(void) {
 	return state;
 }
 
+// ISRG Root X2
+static const char ca_cert_pem[] =
+"-----BEGIN CERTIFICATE-----\n"
+"MIICGzCCAaGgAwIBAgIQQdKd0XLq7qeAwSxs6S+HUjAKBggqhkjOPQQDAzBPMQsw\n"
+"CQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJuZXQgU2VjdXJpdHkgUmVzZWFyY2gg\n"
+"R3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBYMjAeFw0yMDA5MDQwMDAwMDBaFw00\n"
+"MDA5MTcxNjAwMDBaME8xCzAJBgNVBAYTAlVTMSkwJwYDVQQKEyBJbnRlcm5ldCBT\n"
+"ZWN1cml0eSBSZXNlYXJjaCBHcm91cDEVMBMGA1UEAxMMSVNSRyBSb290IFgyMHYw\n"
+"EAYHKoZIzj0CAQYFK4EEACIDYgAEzZvVn4CDCuwJSvMWSj5cz3es3mcFDR0HttwW\n"
+"+1qLFNvicWDEukWVEYmO6gbf9yoWHKS5xcUy4APgHoIYOIvXRdgKam7mAHf7AlF9\n"
+"ItgKbppbd9/w+kHsOdx1ymgHDB/qo0IwQDAOBgNVHQ8BAf8EBAMCAQYwDwYDVR0T\n"
+"AQH/BAUwAwEB/zAdBgNVHQ4EFgQUfEKWrt5LSDv6kviejM9ti6lyN5UwCgYIKoZI\n"
+"zj0EAwMDaAAwZQIwe3lORlCEwkSHRhtFcP9Ymd70/aTSVaYgLXTWNLxBo1BfASdW\n"
+"tL4ndQavEi51mI38AjEAi/V3bNTIZargCyzuFJ0nN6T5U6VR5CmD1/iQMVtCnwr1\n"
+"/q4AaOeMSQ+2b1tbFfLn\n"
+"-----END CERTIFICATE-----\n";
+
 void start_tls_client(const char* servername, int tcp_port) {
 	// Stop core1 first
 	bool core1=is_core1_started();
 	if (core1) stop_core1();
 	// Initialize socket
 	init_tls_socket();
-	/* No CA certificate checking */
+	/* Use CA certificate checking */
 	if (!tls_config) {
-		tls_config = altcp_tls_create_config_client(NULL, 0);
+		tls_config = altcp_tls_create_config_client(
+			(const unsigned char *)ca_cert_pem, 
+			sizeof(ca_cert_pem)
+		);
 
+		if (!tls_config) {
+			printf("Failed to create TLS config with CA certificate\n");
+			return;
+		}
 		mbedtls_ssl_config *mbed_conf = (mbedtls_ssl_config *)tls_config;
-		mbedtls_ssl_conf_authmode(mbed_conf, MBEDTLS_SSL_VERIFY_NONE);
+		mbedtls_ssl_conf_authmode(mbed_conf, MBEDTLS_SSL_VERIFY_REQUIRED);
 
 		mbedtls_ssl_conf_min_version((mbedtls_ssl_config *)tls_config, MBEDTLS_SSL_MAJOR_VERSION_3, MBEDTLS_SSL_MINOR_VERSION_4); // 3.4 = TLS 1.3
 		mbedtls_ssl_conf_max_version((mbedtls_ssl_config *)tls_config, MBEDTLS_SSL_MAJOR_VERSION_3, MBEDTLS_SSL_MINOR_VERSION_4);

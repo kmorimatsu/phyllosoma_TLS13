@@ -114,5 +114,8 @@ void machikania_free(void *ptr);
 #define MBEDTLS_PSA_KEY_SLOT_COUNT          4
 #define MBEDTLS_PSA_MAX_KEY_BITS            2048
 #define MBEDTLS_SSL_SESSION_TICKETS
+#define MBEDTLS_PEM_PARSE_C
+#define MBEDTLS_BASE64_C
+#define MBEDTLS_MPI_MAX_SIZE 512
 
 #define MBEDTLS_SSL_OUT_CONTENT_LEN    16384
