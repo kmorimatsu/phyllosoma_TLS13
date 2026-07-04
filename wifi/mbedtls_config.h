@@ -117,5 +117,7 @@ void machikania_free(void *ptr);
 #define MBEDTLS_PEM_PARSE_C
 #define MBEDTLS_BASE64_C
 #define MBEDTLS_MPI_MAX_SIZE 512
+#define MBEDTLS_SHA384_C
+#define MBEDTLS_PSA_BUILTIN_ALG_SHA_384
 
 #define MBEDTLS_SSL_OUT_CONTENT_LEN    16384
