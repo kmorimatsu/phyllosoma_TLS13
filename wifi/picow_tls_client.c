@@ -28,7 +28,7 @@
 #include "../api.h"
 #include "../core1.h"
 
-#define TLS_CLIENT_TIMEOUT_SECS  15
+#define TLS_CLIENT_TIMEOUT_SECS  90
 
 typedef struct TLS_CLIENT_T_ {
 	struct altcp_pcb *pcb;
