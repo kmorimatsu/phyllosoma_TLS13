@@ -39,6 +39,7 @@ void machikania_free(void *ptr);
 #define MBEDTLS_CTR_DRBG_C
 #define MBEDTLS_ENTROPY_C
 #define MBEDTLS_ERROR_C
+#define MBEDTLS_DEBUG_C
 #define MBEDTLS_MD_C
 // #define MBEDTLS_MD5_C
 #define MBEDTLS_OID_C

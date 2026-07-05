@@ -1,6 +1,6 @@
 #define WIFI_BUFF_SIZE 2048
 
-#define printf wifi_set_error(__LINE__); wifi_set_error_str
+// #define printf wifi_set_error(__LINE__); wifi_set_error_str
 #define DEBUG_printf wifi_set_error(__LINE__); wifi_set_error_str
 
 // wifierror.c

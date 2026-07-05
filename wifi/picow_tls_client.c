@@ -209,6 +209,12 @@ static TLS_CLIENT_T* tls_client_init(void) {
 	return state;
 }
 
+// Getting MbedTLS logs
+static void my_mbedtls_debug(void *ctx, int level, const char *file, int line, const char *str) {
+    // [MbedTLS-level]: message
+    printf("[MbedTLS-%d] %s", level, str);
+}
+
 // ISRG Root X2
 static const char ca_cert_pem[] =
 "-----BEGIN CERTIFICATE-----\n"
@@ -248,6 +254,10 @@ void start_tls_client(const char* servername, int tcp_port) {
 
 		mbedtls_ssl_conf_min_version((mbedtls_ssl_config *)tls_config, MBEDTLS_SSL_MAJOR_VERSION_3, MBEDTLS_SSL_MINOR_VERSION_4); // 3.4 = TLS 1.3
 		mbedtls_ssl_conf_max_version((mbedtls_ssl_config *)tls_config, MBEDTLS_SSL_MAJOR_VERSION_3, MBEDTLS_SSL_MINOR_VERSION_4);
+
+		mbedtls_ssl_conf_dbg(mbed_conf, my_mbedtls_debug, NULL); // Register logging function
+		mbedtls_debug_set_threshold(4);                          // Maximum debugging level of 4
+
 
 	}
 
