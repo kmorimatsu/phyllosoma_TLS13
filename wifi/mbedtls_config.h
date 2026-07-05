@@ -52,7 +52,7 @@ void machikania_free(void *ptr);
 #define MBEDTLS_SHA256_C
 #define MBEDTLS_SHA512_C
 #define MBEDTLS_SSL_CLI_C
-#define MBEDTLS_SSL_SRV_C
+// #define MBEDTLS_SSL_SRV_C
 #define MBEDTLS_SSL_TLS_C
 #define MBEDTLS_X509_CRT_PARSE_C
 #define MBEDTLS_X509_USE_C
@@ -87,7 +87,7 @@ void machikania_free(void *ptr);
 #define MBEDTLS_CIPHER_C
 #define MBEDTLS_AES_C
 #define MBEDTLS_GCM_C
-#define MBEDTLS_CCM_C
+// #define MBEDTLS_CCM_C
 #define MBEDTLS_PSA_CRYPTO_C
 #define MBEDTLS_SSL_KEEP_PEER_CERTIFICATE
 #define MBEDTLS_PSA_CRYPTO_CONFIG_PQC
@@ -113,9 +113,9 @@ void machikania_free(void *ptr);
 #define MBEDTLS_USE_PSA_CRYPTO
 #define MBEDTLS_CTR_DRBG_MAX_SEED_INPUT    256
 #define MBEDTLS_CTR_DRBG_ENTROPY_LEN       32
-#define MBEDTLS_PSA_KEY_SLOT_COUNT          4
-#define MBEDTLS_PSA_MAX_KEY_BITS            2048
-#define MBEDTLS_SSL_SESSION_TICKETS
+#define MBEDTLS_PSA_KEY_SLOT_COUNT          8
+#define MBEDTLS_PSA_MAX_KEY_BITS            4096
+// #define MBEDTLS_SSL_SESSION_TICKETS
 #define MBEDTLS_PEM_PARSE_C
 #define MBEDTLS_BASE64_C
 #define MBEDTLS_MPI_MAX_SIZE 512
