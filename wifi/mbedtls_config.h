@@ -39,7 +39,6 @@ void machikania_free(void *ptr);
 #define MBEDTLS_CTR_DRBG_C
 #define MBEDTLS_ENTROPY_C
 #define MBEDTLS_ERROR_C
-#define MBEDTLS_DEBUG_C
 #define MBEDTLS_MD_C
 // #define MBEDTLS_MD5_C
 #define MBEDTLS_OID_C
@@ -129,3 +128,8 @@ void machikania_free(void *ptr);
 #define MBEDTLS_ECP_WINDOW_SIZE    4
 #undef MBEDTLS_ECP_FIXED_POINT_OPTIM
 #define MBEDTLS_ECP_FIXED_POINT_OPTIM 1
+
+// TLS 1.3 debug-logging
+// Enable following line when logging is required
+// Also enable two lines for this purpose in picow_tls_client.c
+#define MBEDTLS_DEBUG_C

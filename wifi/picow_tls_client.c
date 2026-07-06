@@ -22,6 +22,7 @@
 #include "lwip/altcp_tcp.h"
 #include "lwip/altcp_tls.h"
 #include "lwip/dns.h"
+#include "mbedtls/debug.h"
 
 #include "./wifi.h"
 #include "../compiler.h"
@@ -233,6 +234,7 @@ static const char ca_cert_pem[] =
 "-----END CERTIFICATE-----\n";
 
 void start_tls_client(const char* servername, int tcp_port) {
+	printf("Connecting server: '%s'\n",servername);
 	// Stop core1 first
 	bool core1=is_core1_started();
 	if (core1) stop_core1();
@@ -255,6 +257,9 @@ void start_tls_client(const char* servername, int tcp_port) {
 		mbedtls_ssl_conf_min_version((mbedtls_ssl_config *)tls_config, MBEDTLS_SSL_MAJOR_VERSION_3, MBEDTLS_SSL_MINOR_VERSION_4); // 3.4 = TLS 1.3
 		mbedtls_ssl_conf_max_version((mbedtls_ssl_config *)tls_config, MBEDTLS_SSL_MAJOR_VERSION_3, MBEDTLS_SSL_MINOR_VERSION_4);
 
+		// TLS 1.3 debug-logging
+		// Enable following two lines if logging is needed
+		// Also enable "#define MBEDTLS_DEBUG_C" in mbedtls_config.h
 		mbedtls_ssl_conf_dbg(mbed_conf, my_mbedtls_debug, NULL); // Register logging function
 		mbedtls_debug_set_threshold(4);                          // Maximum debugging level of 4
 
