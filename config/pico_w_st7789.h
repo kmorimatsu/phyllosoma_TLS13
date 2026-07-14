@@ -7,4 +7,4 @@
 
 #include "./pico_st7789.h"
 
-#define KMBASIC_OBJECT_KBYTES 176
+#define KMBASIC_OBJECT_KBYTES 72

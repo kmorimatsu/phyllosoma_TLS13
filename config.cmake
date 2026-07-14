@@ -6,7 +6,7 @@
 
 # Raspberry Pi Pico + ILI9341 LCD
 # YD-RP2040 + ILI9341 LCD
-set(MACHIKANIA_BUILD pico_ili9341)
+#set(MACHIKANIA_BUILD pico_ili9341)
 
 # Raspberry Pi Pico + ST7789 LCD
 # YD-RP2040 + ST7789 LCD
@@ -20,7 +20,7 @@ set(MACHIKANIA_BUILD pico_ili9341)
 #set(MACHIKANIA_BUILD pico_restouch)
 
 # Raspberry Pi Pico + PicoCalc
-#set(MACHIKANIA_BUILD pico_picocalc)
+set(MACHIKANIA_BUILD pico_picocalc)
 
 # RP2350-LCD-1.47
 #set(MACHIKANIA_BUILD rp2350_lcd_1_47)

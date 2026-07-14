@@ -7,4 +7,4 @@
 
 #include "./pico_ntsc.h"
 
-#define KMBASIC_OBJECT_KBYTES 172
+#define KMBASIC_OBJECT_KBYTES 64
