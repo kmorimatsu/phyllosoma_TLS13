@@ -136,4 +136,4 @@ void machikania_free(void *ptr);
 // TLS 1.3 debug-logging
 // Enable following line when logging is required
 // Also enable two lines for this purpose in picow_tls_client.c
-#define MBEDTLS_DEBUG_C
+//#define MBEDTLS_DEBUG_C
