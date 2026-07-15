@@ -358,7 +358,9 @@ static const char ca_cert_pem[] =
 "-----END CERTIFICATE-----\n"
 ;
 
-void start_tls_client(const char* servername, int tcp_port) {
+void start_tls_client(const char* servername, int tcp_port, const char* ca_cert_pem_specified) {
+	int i;
+	static const char* ca_cert_pem_previous=0;
 	printf("Connecting server: '%s'\n",servername);
 	// Stop core1 first
 	bool core1=is_core1_started();
@@ -366,10 +368,15 @@ void start_tls_client(const char* servername, int tcp_port) {
 	// Initialize socket
 	init_tls_socket();
 	/* Use CA certificate checking */
-	if (!tls_config) {
+	if (ca_cert_pem_previous!=ca_cert_pem_specified || !tls_config) {
+		// Determine which certificate to be used
+		ca_cert_pem_previous=ca_cert_pem_specified;
+		if (!ca_cert_pem_specified) ca_cert_pem_specified=&ca_cert_pem[0];
+		for(i=0;ca_cert_pem_specified[i];i++);
+
 		tls_config = altcp_tls_create_config_client(
-			(const unsigned char *)ca_cert_pem, 
-			sizeof(ca_cert_pem)
+			(const unsigned char *)ca_cert_pem_specified, 
+			i+1
 		);
 
 		if (!tls_config) {
