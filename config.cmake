@@ -20,7 +20,7 @@
 #set(MACHIKANIA_BUILD pico_restouch)
 
 # Raspberry Pi Pico + PicoCalc
-set(MACHIKANIA_BUILD pico_picocalc)
+#set(MACHIKANIA_BUILD pico_picocalc)
 
 # RP2350-LCD-1.47
 #set(MACHIKANIA_BUILD rp2350_lcd_1_47)
@@ -30,7 +30,7 @@ set(MACHIKANIA_BUILD pico_picocalc)
 
 # Raspberry Pi Pico + NTSC Video out for Puerulus
 # YD-RP2040 + NTSC Video
-#set(MACHIKANIA_BUILD pico_ntsc)
+set(MACHIKANIA_BUILD pico_ntsc)
 
 # Seeed XIAO RP2040 + NTSC Video out for Puerulus
 #set(MACHIKANIA_BUILD xiao_ntsc)
