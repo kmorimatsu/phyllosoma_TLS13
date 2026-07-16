@@ -6,7 +6,7 @@
 
 # Raspberry Pi Pico + ILI9341 LCD
 # YD-RP2040 + ILI9341 LCD
-set(MACHIKANIA_BUILD pico_ili9341)
+#set(MACHIKANIA_BUILD pico_ili9341)
 
 # Raspberry Pi Pico + ST7789 LCD
 # YD-RP2040 + ST7789 LCD
@@ -30,7 +30,7 @@ set(MACHIKANIA_BUILD pico_ili9341)
 
 # Raspberry Pi Pico + NTSC Video out for Puerulus
 # YD-RP2040 + NTSC Video
-#set(MACHIKANIA_BUILD pico_ntsc)
+set(MACHIKANIA_BUILD pico_ntsc)
 
 # Seeed XIAO RP2040 + NTSC Video out for Puerulus
 #set(MACHIKANIA_BUILD xiao_ntsc)

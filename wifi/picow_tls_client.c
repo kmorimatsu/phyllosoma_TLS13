@@ -22,6 +22,7 @@
 #include "lwip/altcp_tcp.h"
 #include "lwip/altcp_tls.h"
 #include "lwip/dns.h"
+#include "mbedtls/debug.h"
 
 #include "./wifi.h"
 #include "../compiler.h"
@@ -209,6 +210,12 @@ static TLS_CLIENT_T* tls_client_init(void) {
 	return state;
 }
 
+// Getting MbedTLS logs
+static void my_mbedtls_debug(void *ctx, int level, const char *file, int line, const char *str) {
+    // [MbedTLS-level]: message
+    printf("[MbedTLS-%d] %s", level, str);
+}
+
 void start_tls_client(const char* servername, int tcp_port) {
 	// Stop core1 first
 	bool core1=is_core1_started();
@@ -216,7 +223,17 @@ void start_tls_client(const char* servername, int tcp_port) {
 	// Initialize socket
 	init_tls_socket();
 	/* No CA certificate checking */
-	if (!tls_config) tls_config = altcp_tls_create_config_client(NULL, 0);
+	if (!tls_config) {
+		tls_config = altcp_tls_create_config_client(NULL, 0);
+
+		mbedtls_ssl_config *mbed_conf = (mbedtls_ssl_config *)tls_config;
+
+		// TLS debug-logging
+		// Enable following two lines if logging is needed
+		// Also enable "#define MBEDTLS_DEBUG_C" in mbedtls_config.h
+		mbedtls_ssl_conf_dbg(mbed_conf, my_mbedtls_debug, NULL); // Register logging function
+		mbedtls_debug_set_threshold(4);                          // Maximum debugging level of 4
+	}
 
 	TLS_CLIENT_T *state = tls_client_init();
 

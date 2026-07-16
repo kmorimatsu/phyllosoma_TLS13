@@ -72,3 +72,8 @@ void machikania_free(void *ptr);
 /* Added for pico-sdk ver 2.2.0 */
 #define MBEDTLS_PLATFORM_MS_TIME_ALT
 #define MBEDTLS_PLATFORM_TIME_ALT
+
+// TLS debug-logging
+// Enable following line when logging is required
+// Also enable two lines for this purpose in picow_tls_client.c
+#define MBEDTLS_DEBUG_C
