@@ -384,7 +384,8 @@ void start_tls_client(const char* servername, int tcp_port, const char* ca_cert_
 		}
 
 		mbedtls_ssl_config *mbed_conf = (mbedtls_ssl_config *)tls_config;
-		mbedtls_ssl_conf_authmode(mbed_conf, MBEDTLS_SSL_VERIFY_REQUIRED);
+		//mbedtls_ssl_conf_authmode(mbed_conf, MBEDTLS_SSL_VERIFY_REQUIRED);
+		mbedtls_ssl_conf_authmode(mbed_conf, MBEDTLS_SSL_VERIFY_NONE);
 
 		// TLS debug-logging
 		// Enable following two lines if logging is needed
