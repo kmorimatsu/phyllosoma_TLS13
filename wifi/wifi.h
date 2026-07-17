@@ -42,7 +42,7 @@ void start_tcp_server(int tcp_port, int tcp_accept_mode);
 err_t tcp_server_client_close(void* arg);
 
 // picow_tls_server.c
-void start_tls_client(const char* servername, int tcp_port);
+void start_tls_client(const char* servername, int tcp_port, const char* ca_cert_pem_specified);
 
 // See lwip/err.h for error values, like ERR_OK=0, ERR_INPROGRESS=-5, etc
 

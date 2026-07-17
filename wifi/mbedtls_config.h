@@ -73,6 +73,10 @@ void machikania_free(void *ptr);
 #define MBEDTLS_PLATFORM_MS_TIME_ALT
 #define MBEDTLS_PLATFORM_TIME_ALT
 
+/* TLS 1.2 CA certificate-checking */
+#define MBEDTLS_PEM_PARSE_C
+#define MBEDTLS_BASE64_C
+
 // TLS debug-logging
 // Enable following line when logging is required
 // Also enable two lines for this purpose in picow_tls_client.c
