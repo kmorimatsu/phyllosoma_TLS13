@@ -77,6 +77,7 @@ void machikania_free(void *ptr);
 #define MBEDTLS_PEM_PARSE_C
 #define MBEDTLS_BASE64_C
 #define MBEDTLS_SHA384_C
+#define MBEDTLS_KEY_EXCHANGE_ECDHE_RSA_ENABLED
 
 // TLS debug-logging
 // Enable following line when logging is required
