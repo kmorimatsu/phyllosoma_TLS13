@@ -76,6 +76,7 @@ void machikania_free(void *ptr);
 /* TLS 1.2 CA certificate-checking */
 #define MBEDTLS_PEM_PARSE_C
 #define MBEDTLS_BASE64_C
+#define MBEDTLS_SHA384_C
 
 // TLS debug-logging
 // Enable following line when logging is required

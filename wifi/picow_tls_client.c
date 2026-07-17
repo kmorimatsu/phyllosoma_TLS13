@@ -218,7 +218,7 @@ static void my_mbedtls_debug(void *ctx, int level, const char *file, int line, c
 
 // ISRG Root X2, GTS Root R1, Security Communication RootCA2, DigiCert Global Root G3, Amazon Root CA 1, USERTrust ECC Certification Authority, GlobalSign
 static const char ca_cert_pem[] =
-"-----BEGIN CERTIFICATE-----\n"
+/*"-----BEGIN CERTIFICATE-----\n"
 "MIICGzCCAaGgAwIBAgIQQdKd0XLq7qeAwSxs6S+HUjAKBggqhkjOPQQDAzBPMQsw\n"
 "CQYDVQQGEwJVUzEpMCcGA1UEChMgSW50ZXJuZXQgU2VjdXJpdHkgUmVzZWFyY2gg\n"
 "R3JvdXAxFTATBgNVBAMTDElTUkcgUm9vdCBYMjAeFw0yMDA5MDQwMDAwMDBaFw00\n"
@@ -231,7 +231,7 @@ static const char ca_cert_pem[] =
 "zj0EAwMDaAAwZQIwe3lORlCEwkSHRhtFcP9Ymd70/aTSVaYgLXTWNLxBo1BfASdW\n"
 "tL4ndQavEi51mI38AjEAi/V3bNTIZargCyzuFJ0nN6T5U6VR5CmD1/iQMVtCnwr1\n"
 "/q4AaOeMSQ+2b1tbFfLn\n"
-"-----END CERTIFICATE-----\n"
+"-----END CERTIFICATE-----\n"*/
 "-----BEGIN CERTIFICATE-----\n"
 "MIIFVzCCAz+gAwIBAgINAgPlk28xsBNJiGuiFzANBgkqhkiG9w0BAQwFADBHMQsw\n"
 "CQYDVQQGEwJVUzEiMCAGA1UEChMZR29vZ2xlIFRydXN0IFNlcnZpY2VzIExMQzEU\n"
@@ -263,7 +263,7 @@ static const char ca_cert_pem[] =
 "2tIMPNuzjsmhDYAPexZ3FL//2wmUspO8IFgV6dtxQ/PeEMMA3KgqlbbC1j+Qa3bb\n"
 "bP6MvPJwNQzcmRk13NfIRmPVNnGuV/u3gm3c\n"
 "-----END CERTIFICATE-----\n"
-"-----BEGIN CERTIFICATE-----\n"
+/*"-----BEGIN CERTIFICATE-----\n"
 "MIIDdzCCAl+gAwIBAgIBADANBgkqhkiG9w0BAQsFADBdMQswCQYDVQQGEwJKUDEl\n"
 "MCMGA1UEChMcU0VDT00gVHJ1c3QgU3lzdGVtcyBDTy4sTFRELjEnMCUGA1UECxMe\n"
 "U2VjdXJpdHkgQ29tbXVuaWNhdGlvbiBSb290Q0EyMB4XDTA5MDUyOTA1MDAzOVoX\n"
@@ -355,7 +355,7 @@ static const char ca_cert_pem[] =
 "mcIfeg7jLQitChws/zyrVQ4PkX4268NXSb7hLi18YIvDQVETI53O9zJrlAGomecs\n"
 "Mx86OyXShkDOOyyGeMlhLxS67ttVb9+E7gUJTb0o2HLO02JQZR7rkpeDMdmztcpH\n"
 "WD9f\n"
-"-----END CERTIFICATE-----\n"
+"-----END CERTIFICATE-----\n"*/
 ;
 
 void start_tls_client(const char* servername, int tcp_port, const char* ca_cert_pem_specified) {
@@ -390,7 +390,7 @@ void start_tls_client(const char* servername, int tcp_port, const char* ca_cert_
 		// Enable following two lines if logging is needed
 		// Also enable "#define MBEDTLS_DEBUG_C" in mbedtls_config.h
 		mbedtls_ssl_conf_dbg(mbed_conf, my_mbedtls_debug, NULL); // Register logging function
-		mbedtls_debug_set_threshold(4);                          // Maximum debugging level of 4
+		mbedtls_debug_set_threshold(3);                          // Maximum debugging level is 4
 	}
 
 	TLS_CLIENT_T *state = tls_client_init();
