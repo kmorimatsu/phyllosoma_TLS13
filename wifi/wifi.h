@@ -1,8 +1,20 @@
+// Set debug logging for mbedtls here if required
+// The debug level is between 0 and 4
+//#define MACHIKANIA_MBEDTLS_DEBUG_LOGGING 0
+//#define MACHIKANIA_MBEDTLS_DEBUG_LOGGING 1
+//#define MACHIKANIA_MBEDTLS_DEBUG_LOGGING 2
+//#define MACHIKANIA_MBEDTLS_DEBUG_LOGGING 3
+//#define MACHIKANIA_MBEDTLS_DEBUG_LOGGING 4
+
 #define WIFI_BUFF_SIZE 2048
 
-// #define printf wifi_set_error(__LINE__); wifi_set_error_str
-// #define DEBUG_printf wifi_set_error(__LINE__); wifi_set_error_str
+#ifdef MACHIKANIA_MBEDTLS_DEBUG_LOGGING
 #define DEBUG_printf printf
+#else
+#define printf wifi_set_error(__LINE__); wifi_set_error_str
+#define DEBUG_printf wifi_set_error(__LINE__); wifi_set_error_str
+#define MACHIKANIA_MBEDTLS_DEBUG_LOGGING 0
+#endif
 
 // wifierror.c
 void wifi_set_error_str(char* err_str,...);

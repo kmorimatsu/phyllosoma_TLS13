@@ -390,8 +390,8 @@ void start_tls_client(const char* servername, int tcp_port, const char* ca_cert_
 		// TLS debug-logging
 		// Enable following two lines if logging is needed
 		// Also enable "#define MBEDTLS_DEBUG_C" in mbedtls_config.h
-		mbedtls_ssl_conf_dbg(mbed_conf, my_mbedtls_debug, NULL); // Register logging function
-		mbedtls_debug_set_threshold(3);                          // Maximum debugging level is 4
+		mbedtls_ssl_conf_dbg(mbed_conf, my_mbedtls_debug, NULL);       // Register logging function
+		mbedtls_debug_set_threshold(MACHIKANIA_MBEDTLS_DEBUG_LOGGING); // Maximum debugging level is 4
 	}
 
 	TLS_CLIENT_T *state = tls_client_init();
