@@ -241,10 +241,12 @@ int tcpclient_function(void){
 int tlsclient_function(void){
 	g_default_args[2]=443;
 	g_default_args[3]=0;
+	g_default_args[4]=0;
 	return argn_function(LIB_WIFI,
 		ARG_STRING<<ARG1 |
 		ARG_INTEGER_OPTIONAL<<ARG2 |
-		ARG_STRING_OPTIONAL<<ARG3 |
+		ARG_INTEGER_OPTIONAL<<ARG3 |
+		ARG_STRING_OPTIONAL<<ARG4 |
 		LIB_WIFI_TLSCLIENT<<LIBOPTION);
 }
 
@@ -426,7 +428,7 @@ int lib_wifi(int r0, int r1, int r2){
 			start_tcp_server(r1,r0);
 			return 0;
 		case LIB_WIFI_TLSCLIENT:
-			start_tls_client((char*)sp[0],sp[1],(char*)r0);
+			start_tls_client((char*)sp[0],sp[1],sp[2],(char*)r0);
 			return wifi_error();
 		default:
 			break;
